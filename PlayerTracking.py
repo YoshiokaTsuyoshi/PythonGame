@@ -24,6 +24,7 @@ class pt2:
         self.ct2.playerInfo = int(playerData[0])
         for i, j, k, l in zip(range(len(playerData[1::3])), playerData[1::3], playerData[2::3], playerData[3::3]):
             self.ct2.player[i] = np.array([int(j), int(k), int(l)])
+        return True
 
     def set_color_dynamic(self):
         self.ct2.set_player_color_dynamic()
@@ -61,6 +62,8 @@ class pt2:
             tempData.append(stats[indexMax, 4])
             stats = np.delete(stats, indexMax, 0)
             self.currentData.append(tempData)
+        if self.currentData[0][6] < 100:
+            self.currentData.insert(0, self.beforeData[0])
         # [重心x,　重心y, 左を起点とした横全体を1とする位置xの割合, 上を起点とした縦全体を1とする位置yの割合, 幅, 高さ, トラック領域の大きさ]
         return self.currentData
 
@@ -216,7 +219,9 @@ def set_capture_read() -> bool:
     ct2.classFrame = cv2.cvtColor(ct2.defaultFrame, cv2.COLOR_BGR2HSV)
     return ret
 
-def set_camera_resolution(width:int, height:int) -> bool:
+def set_camera_resolution(width:float, height:float) -> bool:
+    ct2.camera.release()
+    ct2.camera = cv2.VideoCapture(0)
     return ct2.camera.set(cv2.CAP_PROP_FRAME_WIDTH, width) and ct2.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 
 ## test program
