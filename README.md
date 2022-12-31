@@ -1,9 +1,14 @@
 # チーム開発のゲームより抜粋
 
-# 実行動画
+## 背景
+大学の講義内でRaspberryPiを使用したものづくりのチーム活動を行った
+このチームではRaspberryPiとカメラを用いて、カラートラッキングで操作できるゲームを制作した
+以下、開発したゲームの一部と使用したライブラリを記載する
+
+## 実行動画
 https://user-images.githubusercontent.com/98578587/209464720-d017c689-90eb-456c-b794-516e18803faf.mp4
 
-# HockeyBattle
+## HockeyBattle
 OpenCVとpygameを用いた、カメラ入力によるカラートラッキングゲーム
 
 ## 使用外部ライブラリ
@@ -15,7 +20,9 @@ OpenCVとpygameを用いた、カメラ入力によるカラートラッキン�
 * GPIOController.py
 
 ## 自分の作成ソースコード
-* 上記以外
+* [PlayerTracking.py](https://github.com/YoshiokaTsuyoshi/PythonGame/tree/main/LibraryDetail) (トラッキング用ライブラリ)
+* NextCircle.py (繰り返し使う描画要素の一部)
+* HockeyBattle.py及びその他
 
 ## 実行方法
 PlayerTracking.pyと同じディレクトリでHockeyBattle.pyを起動
